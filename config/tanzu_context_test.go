@@ -157,6 +157,16 @@ func TestGetKubeconfigForContext(t *testing.T) {
 	cluster = kubeconfig.GetCluster(&kc, "tanzu-cli-mytanzu/current")
 	assert.Equal(t, cluster.Cluster.Server, c.ClusterOpts.Endpoint+"/project/project2-id/clustergroup/clustergroup1")
 
+	// Test getting the kubeconfig for a foundation within a project
+	kubeconfigBytes, err = GetKubeconfigForContext(c.Name, ForProject("project2-id"), ForFoundationGroup("foundationgroup1"))
+	assert.NoError(t, err)
+	c, err = GetContext("test-tanzu")
+	assert.NoError(t, err)
+	err = yaml.Unmarshal(kubeconfigBytes, &kc)
+	assert.NoError(t, err)
+	cluster = kubeconfig.GetCluster(&kc, "tanzu-cli-mytanzu/current")
+	assert.Equal(t, cluster.Cluster.Server, c.ClusterOpts.Endpoint+"/project/project2-id/foundationgroup/foundationgroup1")
+
 	// Test getting the kubeconfig with incorrect resource combination (request kubeconfig for space and clustergroup)
 	c, err = GetContext("test-tanzu")
 	assert.NoError(t, err)
