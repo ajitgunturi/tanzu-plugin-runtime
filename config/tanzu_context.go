@@ -329,7 +329,12 @@ func SetTanzuContextActiveResource(contextName string, resourceInfo ResourceInfo
 	if resourceInfo.SpaceName != "" {
 		args = append(args, "--space", resourceInfo.SpaceName)
 	}
-
+	if resourceInfo.ClusterGroupName != "" {
+		args = append(args, "--clustergroup", resourceInfo.ClusterGroupName)
+	}
+	if resourceInfo.FoundationGroupName != "" {
+		args = append(args, "--foundationgroup", resourceInfo.FoundationGroupName)
+	}
 	altCommandArgs = append(altCommandArgs, args...)
 
 	// Check if there is an alternate means to set the active Tanzu context active resource
