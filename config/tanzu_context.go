@@ -27,7 +27,7 @@ const (
 	ProjectIDKey           = "tanzuProjectID"
 	SpaceNameKey           = "tanzuSpaceName"
 	ClusterGroupNameKey    = "tanzuClusterGroupName"
-	FoundationGroupNameKey = "tanzuFoundationGroupKey"
+	FoundationGroupNameKey = "tanzuFoundationGroupName"
 
 	TanzuMissionControlEndpointKey = "tanzuMissionControlEndpoint"
 	TanzuHubEndpointKey            = "tanzuHubEndpoint"
