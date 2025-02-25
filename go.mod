@@ -1,4 +1,4 @@
-module github.com/vmware-tanzu/tanzu-plugin-runtime
+module github.com/ajitgunturi/tanzu-plugin-runtime
 
 go 1.18
 
